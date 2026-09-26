@@ -445,6 +445,27 @@ button {
 
 
 /* =========================================================
+   CURSOR
+========================================================= */
+
+.cursor,
+.cursor-ring {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: 99999;
+
+    transform: translate(-50%, -50%);
+
+}
+
+
+
+
+
+/* =========================================================
    BOOT SCREEN
 ========================================================= */
 
@@ -2995,6 +3016,372 @@ footer {
 
 
 /* =========================================================
+   THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 30px;
+    padding: 4px 8px 4px 5px;
+    border: 1px solid rgba(0,246,255,.28);
+    background: rgba(2,3,10,.72);
+    color: var(--cyan);
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 18px rgba(0,246,255,.14);
+}
+
+.theme-toggle-track {
+    position: relative;
+    width: 25px;
+    height: 13px;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.theme-toggle-dot {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    top: 2px;
+    left: 3px;
+    border-radius: 1px;
+    background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+    transition: transform .25s ease;
+}
+
+/* =========================================================
+   MINECRAFT MODE — COMPLETE LIVE THEME
+   No reload: the JS only toggles this class.
+========================================================= */
+
+body.minecraft-theme {
+    --black: #101712;
+    --black-2: #18241a;
+    --navy: #26382a;
+    --cyan: #7bd64a;
+    --cyan-soft: #a9ef72;
+    --magenta: #b4773f;
+    --magenta-soft: #d39a59;
+    --blue: #4d9a45;
+    --blue-soft: #80c967;
+    --white: #f6f0d2;
+    --text: #e9e2c3;
+    --muted: #a9aa8d;
+    --border: rgba(123,214,74,.32);
+    --glass: rgba(26,39,27,.94);
+    --font-display: "Press Start 2P", "Orbitron", sans-serif;
+    --font-body: "Rajdhani", sans-serif;
+    --font-mono: "Share Tech Mono", monospace;
+
+    background: #7ec8ed;
+    color: var(--white);
+    image-rendering: pixelated;
+    transition: background-color .45s ease, color .45s ease;
+}
+
+/* Premium Minecraft-inspired world backdrop */
+body.minecraft-theme::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom,
+            #76c5eb 0%,
+            #9edaf0 40%,
+            #b9e5f2 44%,
+            #78b94e 44%,
+            #5d983e 49%,
+            #65452b 49%,
+            #51361f 100%);
+}
+
+body.minecraft-theme::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    pointer-events: none;
+    opacity: .28;
+    background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 2px, transparent 2px 4px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.025) 0 2px, transparent 2px 32px),
+        linear-gradient(to bottom, transparent 0 48%, rgba(15,25,15,.22) 48% 49%, transparent 49%);
+    mix-blend-mode: multiply;
+}
+
+body.minecraft-theme .background {
+    background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,.72) 0 3%, transparent 3.5%),
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.58) 0 4%, transparent 4.5%),
+        radial-gradient(circle at 22% 19%, rgba(255,255,255,.48) 0 3%, transparent 3.5%),
+        linear-gradient(to bottom, rgba(255,255,255,.04), rgba(34,65,29,.18));
+    opacity: .95;
+}
+
+body.minecraft-theme .background .city-glow,
+body.minecraft-theme .rain {
+    display: none !important;
+}
+
+body.minecraft-theme .city-silhouette {
+    opacity: .7;
+    filter: none;
+    background:
+        linear-gradient(#4f7d38,#4f7d38) 2% 72% / 13% 28% no-repeat,
+        linear-gradient(#416b32,#416b32) 16% 62% / 10% 38% no-repeat,
+        linear-gradient(#527f3c,#527f3c) 29% 75% / 16% 25% no-repeat,
+        linear-gradient(#3d6530,#3d6530) 48% 57% / 13% 43% no-repeat,
+        linear-gradient(#527f3c,#527f3c) 64% 70% / 15% 30% no-repeat,
+        linear-gradient(#3f6931,#3f6931) 82% 60% / 16% 40% no-repeat;
+}
+
+body.minecraft-theme .perspective-grid {
+    opacity: .11;
+    border-color: rgba(255,255,255,.18);
+}
+
+body.minecraft-theme .scanlines { opacity: .06; }
+
+/* Block-game navigation, but kept clean and portfolio-grade */
+body.minecraft-theme .nav,
+body.minecraft-theme .mobile-navigation {
+    background: linear-gradient(#30482d, #263a25);
+    border-color: #172319;
+    box-shadow: 0 3px 0 #172319, 0 9px 25px rgba(18,28,16,.3);
+}
+
+body.minecraft-theme .nav-logo,
+body.minecraft-theme .nav-links a,
+body.minecraft-theme .nav-connect,
+body.minecraft-theme .mobile-navigation a {
+    font-family: "Press Start 2P", sans-serif;
+    text-shadow: 2px 2px 0 #172319;
+}
+
+body.minecraft-theme .hero-title,
+body.minecraft-theme .hero-title-gradient,
+body.minecraft-theme .hero-alias,
+body.minecraft-theme h1,
+body.minecraft-theme h2,
+body.minecraft-theme h3 {
+    font-family: "Press Start 2P", sans-serif;
+    letter-spacing: 0;
+    text-shadow: 4px 4px 0 rgba(37,61,30,.78);
+}
+
+body.minecraft-theme .hero-title-gradient {
+    font-size: inherit;
+    background: linear-gradient(#fff9d9 0 42%, #9bdd63 43% 67%, #4d8736 68% 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(34,59,28,.42);
+}
+
+/* Pixel buttons with layered block depth */
+body.minecraft-theme .button,
+body.minecraft-theme .theme-toggle,
+body.minecraft-theme .nav-connect {
+    border-radius: 0;
+    border: 2px solid #172319;
+    box-shadow:
+        inset 2px 2px 0 rgba(255,255,255,.18),
+        inset -2px -2px 0 rgba(0,0,0,.2),
+        4px 4px 0 #172319;
+    font-family: "Press Start 2P", sans-serif;
+}
+
+body.minecraft-theme .button-primary {
+    background: linear-gradient(#8dd85b 0 48%, #579a3e 49% 100%);
+    color: #fff9d9;
+    text-shadow: 2px 2px 0 #39672d;
+}
+
+body.minecraft-theme .button-outline {
+    background: linear-gradient(#8a6137, #664526);
+    color: #fff1c5;
+    border-color: #392619;
+}
+
+/* Blocks: green/stone/wood hierarchy instead of generic glass cards */
+body.minecraft-theme .profile-card,
+body.minecraft-theme .expertise-card,
+body.minecraft-theme .project-card,
+body.minecraft-theme .certificate-card,
+body.minecraft-theme .invex-wrapper,
+body.minecraft-theme .terminal-window {
+    border-radius: 0;
+    border: 2px solid #172319;
+    background:
+        linear-gradient(rgba(48,67,40,.97), rgba(29,43,28,.97)),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 3px, transparent 3px 6px);
+    box-shadow:
+        6px 6px 0 rgba(22,31,19,.92),
+        inset 3px 3px 0 rgba(255,255,255,.06),
+        inset -3px -3px 0 rgba(0,0,0,.12);
+    backdrop-filter: none;
+}
+
+body.minecraft-theme .project-card:hover,
+body.minecraft-theme .expertise-card:hover,
+body.minecraft-theme .profile-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        6px 9px 0 rgba(22,31,19,.92),
+        0 0 0 1px rgba(123,214,74,.16);
+}
+
+body.minecraft-theme .profile-card::before,
+body.minecraft-theme .expertise-card::before,
+body.minecraft-theme .project-card::before,
+body.minecraft-theme .certificate-card::before,
+body.minecraft-theme .invex-wrapper::before {
+    border: 0;
+    background: none;
+    display: none;
+}
+
+body.minecraft-theme .profile-image,
+body.minecraft-theme .badge-image,
+body.minecraft-theme img {
+    image-rendering: pixelated;
+}
+
+body.minecraft-theme .card-icon,
+body.minecraft-theme .system-dot,
+body.minecraft-theme .online span {
+    border-radius: 0;
+}
+
+body.minecraft-theme .card-icon {
+    background: linear-gradient(#6ca84b, #4c8137);
+    border: 2px solid #172319;
+    color: #fff8d6;
+    box-shadow: 3px 3px 0 #172319;
+}
+
+body.minecraft-theme .section-number,
+body.minecraft-theme .section-kicker,
+body.minecraft-theme .system-label,
+body.minecraft-theme .hero-eyebrow,
+body.minecraft-theme .hero-domain,
+body.minecraft-theme .meta-number,
+body.minecraft-theme .online,
+body.minecraft-theme .terminal-status {
+    color: #a6e975;
+}
+
+body.minecraft-theme .domain-divider,
+body.minecraft-theme .alias-symbol {
+    color: #d08a47;
+}
+
+body.minecraft-theme .theme-toggle {
+    color: #d8d093;
+    background: linear-gradient(#496b3a, #334e2c);
+    border-color: #172319;
+}
+
+body.minecraft-theme .theme-toggle-dot {
+    transform: translateX(12px);
+    background: #f0e5ad;
+    box-shadow: 2px 2px 0 #172319;
+}
+
+body.minecraft-theme .theme-toggle:hover {
+    box-shadow: 4px 4px 0 #172319;
+}
+
+body.minecraft-theme .hero-description,
+body.minecraft-theme p,
+body.minecraft-theme .meta-text {
+    text-shadow: 1px 1px 0 rgba(20,30,18,.72);
+}
+
+body.minecraft-theme .footer,
+body.minecraft-theme .footer-bottom {
+    border-color: rgba(23,35,25,.82);
+}
+
+body.minecraft-theme .footer {
+    background: rgba(29,43,26,.84);
+}
+
+body.minecraft-theme .particle {
+    width: 3px !important;
+    height: 3px !important;
+    border-radius: 0 !important;
+    background: #e3d993 !important;
+    box-shadow: 3px 0 0 rgba(227,217,147,.25);
+}
+
+/* Minecraft mode stays readable on small screens */
+@media(max-width:1100px) {
+    .theme-toggle { margin-left: auto; margin-right: 10px; }
+}
+
+@media(max-width:700px) {
+    .theme-toggle {
+        height: 28px;
+        padding: 4px 6px 4px 4px;
+        margin-right: 8px;
+    }
+
+    .theme-toggle-label { display: none; }
+
+    body.minecraft-theme .hero-title,
+    body.minecraft-theme .hero-title-gradient {
+        font-size: clamp(38px, 10.5vw, 58px);
+        line-height: .98;
+        text-shadow: 3px 3px 0 rgba(37,61,30,.78);
+    }
+
+    body.minecraft-theme .button,
+    body.minecraft-theme .theme-toggle {
+        box-shadow: inset 2px 2px 0 rgba(255,255,255,.16), 3px 3px 0 #172319;
+    }
+}
+
+@media(max-width:1100px) {
+    .theme-toggle {
+        margin-left: auto;
+        margin-right: 10px;
+    }
+}
+
+@media(max-width:700px) {
+    .theme-toggle {
+        height: 28px;
+        padding: 4px 6px 4px 4px;
+        margin-right: 8px;
+    }
+
+    .theme-toggle-label {
+        display: none;
+    }
+
+    body.minecraft-theme .hero-title,
+    body.minecraft-theme .hero-title-gradient {
+        font-size: clamp(42px, 12vw, 64px);
+        line-height: .95;
+    }
+}
+
+/* =========================================================
    RESPONSIVE
 ========================================================= */
 
@@ -3042,6 +3429,16 @@ footer {
 
 
 @media(max-width:700px) {
+
+    /* Smaller SHADOWBROKER title on phones */
+    .hero-title {
+        font-size: clamp(42px, 13vw, 68px);
+        letter-spacing: -2px;
+    }
+
+    .hero-title-gradient {
+        font-size: 40px;
+    }
 
     .section {
 
@@ -3178,11 +3575,19 @@ footer {
         text-align: center;
 
     }
-
 }
 
 
 @media(max-width:480px) {
+
+    .hero-title {
+        font-size: 48px;
+        letter-spacing: -2px;
+    }
+
+    .hero-title-gradient {
+        font-size: 30px;
+    }
 
     .terminal-window {
 
@@ -3247,307 +3652,64 @@ footer {
     }
 
 }
-
 /* =========================================================
-   RESPONSIVE POLISH — DESKTOP / TABLET / MOBILE
+   MINECRAFT HERO LAYOUT FIX
+   Keeps SHADOWBROKER compact and the profile card in view.
 ========================================================= */
-
-html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+body.minecraft-theme .hero-container {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 420px);
+    gap: 48px;
+    width: min(1320px, 100%);
 }
 
-body {
-    overflow-x: hidden;
-    width: 100%;
+body.minecraft-theme .hero-left {
+    min-width: 0;
 }
 
-img, video, canvas {
+body.minecraft-theme .hero-title,
+body.minecraft-theme .hero-title-gradient {
+    font-size: 70px;
+    line-height: .92;
+    letter-spacing: -1px;
+    overflow-wrap: anywhere;
+}
+
+body.minecraft-theme .hero-title-gradient {
+    display: inline-block;
     max-width: 100%;
 }
 
-button, a {
-    -webkit-tap-highlight-color: transparent;
+body.minecraft-theme .hero-right {
+    min-width: 0;
+    width: 100%;
+}
+
+body.minecraft-theme .profile-card {
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
 }
 
 @media (max-width: 1100px) {
-    .navbar {
-        padding: 0 5vw;
+    body.minecraft-theme .hero-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
     }
 
-    .nav-container {
-        min-height: 72px;
+    body.minecraft-theme .hero-right {
+        margin-top: 0;
     }
 
-    .hero-container {
-        gap: 45px;
-    }
-
-    .section {
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
-
-    .hero-right {
-        width: min(620px, 100%);
-        margin-left: auto;
-        margin-right: auto;
+    body.minecraft-theme .profile-card {
+        margin-inline: auto;
     }
 }
 
 @media (max-width: 700px) {
-    .navbar {
-        padding: 0 5vw;
-    }
-
-    .brand {
-        gap: 7px;
-        min-width: 0;
-    }
-
-    .brand-main {
-        font-size: 12px;
-        letter-spacing: 1.5px;
-    }
-
-    .brand-line {
-        width: 18px;
-    }
-
-    .brand-alias {
-        font-size: 8px;
-        letter-spacing: 1px;
-    }
-
-    .mobile-menu-button {
-        width: 36px;
-        min-width: 36px;
-        padding: 4px;
-    }
-
-    .mobile-navigation {
-        inset: 74px 5vw auto;
-        max-height: calc(100vh - 95px);
-        overflow-y: auto;
-    }
-
-    .section {
-        padding: 85px 6vw;
-    }
-
-    .hero {
-        min-height: auto;
-        padding-top: 125px;
-        padding-bottom: 80px;
-    }
-
-    .hero-container {
-        width: 100%;
-        gap: 35px;
-    }
-
-    .hero-title {
-        font-size: clamp(44px, 16vw, 76px);
-        line-height: .92;
-        letter-spacing: -2px;
-        overflow-wrap: anywhere;
-    }
-
-    .hero-description {
-        max-width: 100%;
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-    .hero-domain {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .hero-actions {
-        width: 100%;
-        gap: 10px;
-    }
-
-    .hero-actions a,
-    .hero-actions button {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .hero-meta {
-        flex-wrap: wrap;
-        gap: 14px 24px;
-    }
-
-    .hero-right {
-        width: 100%;
-        margin: 0;
-    }
-
-    .profile-card {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .profile-image-container {
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .section-heading {
-        margin-bottom: 35px;
-    }
-
-    .section-heading h2 {
-        font-size: clamp(30px, 10vw, 52px);
-        line-height: 1;
-        overflow-wrap: anywhere;
-    }
-
-    .expertise-grid,
-    .badges-grid,
-    .about-grid,
-    .social-grid {
-        width: 100%;
-    }
-
-    .project-card {
-        grid-template-columns: 36px minmax(0, 1fr);
-        gap: 14px;
-        padding: 28px 4px;
-    }
-
-    .project-card:hover {
-        padding-left: 4px;
-    }
-
-    .project-title,
-    .project-description,
-    .project-tags {
-        min-width: 0;
-        overflow-wrap: anywhere;
-    }
-
-    .invex-wrapper {
-        min-height: 0;
-        padding: 45px 22px;
-    }
-
-    .invex-background-word {
-        right: -45px;
-        bottom: -20px;
-        font-size: clamp(100px, 32vw, 190px);
-        opacity: .08;
-    }
-
-    .certificate-card {
-        width: 100%;
-    }
-
-    .social-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .social-grid a,
-    .social-grid a:nth-child(2) {
-        border-right: none;
-    }
-
-    .footer-container {
-        width: 100%;
-    }
-
-    .footer-bottom {
-        padding-bottom: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .section {
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
-
-    .terminal-window {
-        width: 92vw;
-        max-width: 92vw;
-    }
-
-    #terminal-content {
-        overflow-x: hidden;
-        word-break: break-word;
-    }
-
-    .hero {
-        padding-top: 115px;
-    }
-
-    .hero-title {
-        font-size: clamp(40px, 17vw, 64px);
-    }
-
-    .hero-alias {
-        font-size: 15px;
-        letter-spacing: 2px;
-    }
-
-    .hero-description {
-        font-size: 14px;
-    }
-
-    .system-label,
-    .section-kicker {
-        font-size: 9px;
-        letter-spacing: 1.4px;
-    }
-
-    .profile-card {
-        padding: 16px;
-    }
-
-    .profile-image-container {
-        width: min(180px, 75vw);
-        height: min(220px, 92vw);
-    }
-
-    .profile-info div {
-        grid-template-columns: 86px minmax(0, 1fr);
-        gap: 8px;
-    }
-
-    .project-card {
-        grid-template-columns: 30px minmax(0, 1fr);
-        padding: 24px 0;
-    }
-
-    .project-index {
-        font-size: 9px;
-    }
-
-    .invex-wrapper {
-        padding: 32px 18px;
-    }
-
-    .invex-domains {
-        gap: 10px;
-    }
-
-    .mobile-navigation {
-        inset: 70px 5vw auto;
-        padding: 18px 20px;
-    }
-}
-
-@media (hover: none), (pointer: coarse) {
-    /* Touch devices do not need desktop-only hover effects. */
-    .project-card:hover {
-        padding-left: 20px;
-        background: transparent;
-    }
-
-    .magnetic {
-        transform: none !important;
+    body.minecraft-theme .hero-title,
+    body.minecraft-theme .hero-title-gradient {
+        font-size: clamp(38px, 10.5vw, 58px);
+        line-height: .98;
+        letter-spacing: -1px;
     }
 }
