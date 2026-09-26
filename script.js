@@ -326,6 +326,86 @@ tiltCards.forEach(card => {
 
 
 /* =========================================================
+   CURSOR HOVER
+========================================================= */
+
+document
+    .querySelectorAll("a, button, .tilt-card")
+    .forEach(element => {
+
+        element.addEventListener(
+            "mouseenter",
+            () => {
+
+                cursorRing.style.width =
+                    "55px";
+
+                cursorRing.style.height =
+                    "55px";
+
+                cursorRing.style.borderColor =
+                    "#00f6ff";
+
+            }
+        );
+
+
+        element.addEventListener(
+            "mouseleave",
+            () => {
+
+                cursorRing.style.width =
+                    "34px";
+
+                cursorRing.style.height =
+                    "34px";
+
+                cursorRing.style.borderColor =
+                    "#ff00d4";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   THEME TOGGLE — LIVE MINECRAFT MODE
+========================================================= */
+
+const themeToggle = document.getElementById("themeToggle");
+const savedTheme = localStorage.getItem("shadowbroker-theme");
+
+function setMinecraftTheme(enabled) {
+    document.body.classList.toggle("minecraft-theme", enabled);
+
+    if (!themeToggle) return;
+
+    const label = themeToggle.querySelector(".theme-toggle-label");
+    themeToggle.setAttribute(
+        "aria-label",
+        enabled ? "Switch to cyberpunk theme" : "Switch to Minecraft theme"
+    );
+    themeToggle.setAttribute(
+        "title",
+        enabled ? "Switch to CYBERPUNK theme" : "Switch to MINECRAFT theme"
+    );
+
+    if (label) label.textContent = enabled ? "MC" : "CY";
+}
+
+setMinecraftTheme(savedTheme === "minecraft");
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+        const enabled = !document.body.classList.contains("minecraft-theme");
+        setMinecraftTheme(enabled);
+        localStorage.setItem("shadowbroker-theme", enabled ? "minecraft" : "default");
+    });
+}
+
+
+/* =========================================================
    MAGNETIC BUTTONS
 ========================================================= */
 
