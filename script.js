@@ -326,6 +326,67 @@ tiltCards.forEach(card => {
 
 
 /* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+const cursor =
+    document.querySelector(".cursor");
+
+const cursorRing =
+    document.querySelector(".cursor-ring");
+
+
+let mouseX = 0;
+let mouseY = 0;
+
+let ringX = 0;
+let ringY = 0;
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+
+        cursor.style.left =
+            `${mouseX}px`;
+
+        cursor.style.top =
+            `${mouseY}px`;
+
+    }
+);
+
+
+function animateCursor() {
+
+    ringX +=
+        (mouseX - ringX) * .12;
+
+    ringY +=
+        (mouseY - ringY) * .12;
+
+
+    cursorRing.style.left =
+        `${ringX}px`;
+
+    cursorRing.style.top =
+        `${ringY}px`;
+
+
+    requestAnimationFrame(
+        animateCursor
+    );
+
+}
+
+
+animateCursor();
+
+
+/* =========================================================
    CURSOR HOVER
 ========================================================= */
 
@@ -367,42 +428,6 @@ document
         );
 
     });
-
-
-/* =========================================================
-   THEME TOGGLE — LIVE MINECRAFT MODE
-========================================================= */
-
-const themeToggle = document.getElementById("themeToggle");
-const savedTheme = localStorage.getItem("shadowbroker-theme");
-
-function setMinecraftTheme(enabled) {
-    document.body.classList.toggle("minecraft-theme", enabled);
-
-    if (!themeToggle) return;
-
-    const label = themeToggle.querySelector(".theme-toggle-label");
-    themeToggle.setAttribute(
-        "aria-label",
-        enabled ? "Switch to cyberpunk theme" : "Switch to Minecraft theme"
-    );
-    themeToggle.setAttribute(
-        "title",
-        enabled ? "Switch to CYBERPUNK theme" : "Switch to MINECRAFT theme"
-    );
-
-    if (label) label.textContent = enabled ? "MC" : "CY";
-}
-
-setMinecraftTheme(savedTheme === "minecraft");
-
-if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-        const enabled = !document.body.classList.contains("minecraft-theme");
-        setMinecraftTheme(enabled);
-        localStorage.setItem("shadowbroker-theme", enabled ? "minecraft" : "default");
-    });
-}
 
 
 /* =========================================================
