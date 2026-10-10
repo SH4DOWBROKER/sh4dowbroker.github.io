@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Press+Start+2P&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
           rel="stylesheet">
 
     <!-- ICONS -->
@@ -32,6 +32,14 @@
 <audio id="bgMusic" autoplay loop>
     <source src="Prince naseem.mp3" type="audio/mpeg">
 </audio>
+<!-- =========================================================
+     CURSOR
+========================================================= -->
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+
 <!-- =========================================================
      BACKGROUND
 ========================================================= -->
@@ -136,16 +144,6 @@
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
         </a>
-
-
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme" title="Switch theme">
-
-            <span class="theme-toggle-track">
-                <span class="theme-toggle-dot"></span>
-            </span>
-            <span class="theme-toggle-label">MC</span>
-
-        </button>
 
 
         <button class="mobile-menu-button" id="mobileMenu">
@@ -818,137 +816,81 @@
 
         <div class="projects-list">
 
-
             <article class="project-card reveal">
-
-                <div class="project-index">
-                    001
-                </div>
-
+                <div class="project-index">001</div>
                 <div class="project-main">
-
-                    <span class="project-type">
-                        CYBERSECURITY
-                    </span>
-
-                    <h3>
-                        SECURITY LAB
-                    </h3>
-
-                    <p>
-
-                        A personal cybersecurity environment
-                        focused on ethical hacking,
-                        experimentation, reconnaissance
-                        and vulnerability research.
-
-                    </p>
-
-                    <div class="project-tags">
-
-                        <span>LINUX</span>
-                        <span>WEB SECURITY</span>
-                        <span>CTF</span>
-                        <span>OSINT</span>
-
-                    </div>
-
+                    <span class="project-type">CYBERSECURITY / LAB</span>
+                    <h3>WINDOWS 7 ETERNALBLUE LAB</h3>
+                    <p>A controlled security lab exploring the MS17-010 EternalBlue vulnerability against a Windows 7 test machine, using Kali Linux, Metasploit and Meterpreter to understand exploitation workflows and defensive lessons.</p>
+                    <div class="project-tags"><span>KALI LINUX</span><span>METASPLOIT</span><span>METERPRETER</span><span>MS17-010</span></div>
                 </div>
-
-                <div class="project-arrow">
-
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                </div>
-
+                <div class="project-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
             </article>
 
-
             <article class="project-card reveal">
-
-                <div class="project-index">
-                    002
-                </div>
-
+                <div class="project-index">002</div>
                 <div class="project-main">
-
-                    <span class="project-type">
-                        DEVELOPMENT
-                    </span>
-
-                    <h3>
-                        DIGITAL EXPERIENCES
-                    </h3>
-
-                    <p>
-
-                        Interactive websites and digital
-                        interfaces designed around motion,
-                        identity and immersive visual systems.
-
-                    </p>
-
-                    <div class="project-tags">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JAVASCRIPT</span>
-                        <span>UI / UX</span>
-
-                    </div>
-
+                    <span class="project-type">NETWORK SECURITY / AUTHORIZED TEST</span>
+                    <h3>WI-FI & BROADBAND SECURITY REVIEW</h3>
+                    <p>An authorized review of a residential broadband environment using Nmap for network discovery and Hydra to study authentication risks. The project reinforced the importance of explicit scope, careful testing, and verifying service interruptions with the ISP before attributing a cause.</p>
+                    <div class="project-tags"><span>NMAP</span><span>HYDRA</span><span>NETWORK RECON</span><span>ETHICAL TESTING</span></div>
                 </div>
-
-                <div class="project-arrow">
-
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                </div>
-
+                <div class="project-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
             </article>
 
+            <article class="project-card reveal">
+                <div class="project-index">003</div>
+                <div class="project-main">
+                    <span class="project-type">SECURITY RESEARCH / TOOL ANALYSIS</span>
+                    <h3>INSTAGRAM BRUTE-FORCE TOOL STUDY</h3>
+                    <p>A research study of an Instagram brute-force tool reported in 2023, focused on understanding password-guessing risks, account security, rate limiting and the importance of multi-factor authentication. This entry describes tool research, not a claim of authorship.</p>
+                    <div class="project-tags"><span>SECURITY RESEARCH</span><span>AUTHENTICATION</span><span>ACCOUNT SAFETY</span><span>2023</span></div>
+                </div>
+                <div class="project-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </article>
 
             <article class="project-card reveal">
-
-                <div class="project-index">
-                    003
-                </div>
-
+                <div class="project-index">004</div>
                 <div class="project-main">
-
-                    <span class="project-type">
-                        FINANCE
-                    </span>
-
-                    <h3>
-                        MARKET LAB
-                    </h3>
-
-                    <p>
-
-                        A personal research environment for
-                        studying market structure, liquidity,
-                        ICT concepts and price behaviour.
-
-                    </p>
-
-                    <div class="project-tags">
-
-                        <span>ICT</span>
-                        <span>FOREX</span>
-                        <span>SMC</span>
-                        <span>MARKET STRUCTURE</span>
-
-                    </div>
-
+                    <span class="project-type">EDTECH / HACKATHON PROJECT</span>
+                    <h3>INTERACTIVE LEARNING PLATFORM</h3>
+                    <p>Built with Ibrahim Badhusha for a hackathon at Baselios College, Kollam. The platform is designed to help students from Class 5 through Plus Two and Kerala PSC aspirants find textbooks, notes and other learning resources in one place.</p>
+                    <div class="project-tags"><span>HTML</span><span>CSS</span><span>JAVA</span><span>EDTECH</span></div>
                 </div>
+                <div class="project-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </article>
 
-                <div class="project-arrow">
-
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
+            <article class="project-card reveal">
+                <div class="project-index">005</div>
+                <div class="project-main">
+                    <span class="project-type">WEB DEVELOPMENT / DEMO</span>
+                    <h3>ONLINE EVM VOTING SIMULATOR</h3>
+                    <p>A web-hosted sample voting simulator that lets users explore a mock EVM-style voting flow from a mobile device. It is a demonstration project only and is not intended for official elections or the collection of real votes.</p>
+                    <div class="project-tags"><span>WEB APP</span><span>VOTING UI</span><span>MOBILE-FRIENDLY</span><span>SIMULATION</span></div>
                 </div>
+                <div class="project-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </article>
 
+            <article class="project-card reveal">
+                <div class="project-index">006</div>
+                <div class="project-main">
+                    <span class="project-type">ARTIFICIAL INTELLIGENCE / HACKATHON</span>
+                    <h3>LLM-POWERED AI AGENT</h3>
+                    <p>Created with Badhusha during an interactive AI hackathon at Infopark, Trivandrum. The web-hosted prototype combines a large language model with a dataset sourced from Kaggle to explore a dataset-informed AI assistant experience.</p>
+                    <div class="project-tags"><span>LLM</span><span>KAGGLE DATASET</span><span>AI AGENT</span><span>WEB HOSTED</span></div>
+                </div>
+                <div class="project-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-index">007</div>
+                <div class="project-main">
+                    <span class="project-type">FOUNDER / TRADING EDUCATION</span>
+                    <h3>INVEX — TRADING EDUCATION</h3>
+                    <p>Founded by Adithyan to make trading education more accessible to beginners. INVEX focuses on explaining market structure, ICT and SMC concepts, fair value gaps, order blocks and liquidity while encouraging independent learning and caution around misleading course promises.</p>
+                    <div class="project-tags"><span>INVEX</span><span>ICT</span><span>SMC</span><span>FOREX EDUCATION</span></div>
+                </div>
+                <div class="project-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
             </article>
 
         </div>
